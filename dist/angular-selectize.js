@@ -38,7 +38,7 @@ angular.module('selectize', [])
                     };
 
                     var validate = function () {
-                        var isInvalid = (scope.ngRequired() || attrs.required || settings.required) && isEmpty(scope.ngModel);
+                        var isInvalid = (scope.ngRequired() || attrs.required || settings.required) && isEmpty(modelCtrl.$modelValue);
                         modelCtrl.$setValidity('required', !isInvalid);
                     };
 
@@ -63,8 +63,8 @@ angular.module('selectize', [])
                         selectize.$control.toggleClass('ng-dirty', modelCtrl.$dirty);
                         selectize.$control.toggleClass('ng-pristine', modelCtrl.$pristine);
 
-                        if (!angular.equals(selectize.items, scope.ngModel)) {
-                            selectize.setValue(scope.ngModel, true);
+                        if (!angular.equals(selectize.items, modelCtrl.$modelValue)) {
+                            selectize.setValue(modelCtrl.$modelValue, true);
                         }
                     };
 
